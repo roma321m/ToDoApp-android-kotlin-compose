@@ -26,15 +26,39 @@ import com.example.todoapp_android_kotlin_compose.R
 import com.example.todoapp_android_kotlin_compose.components.PriorityItem
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
 import com.example.todoapp_android_kotlin_compose.ui.theme.*
+import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
+import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState
 
 @Composable
-fun ListAppBar() {
-    DefaultListAppBar(
-        onSearchClicked = { /*TODO*/ },
-        onSortClicked = { /*TODO*/ },
-        onDeleteAllClicked = { /*TODO*/ }
-    )
-    //SearchAppBar("", {}, {}, {})
+fun ListAppBar(
+    sharedViewModel: SharedViewModel,
+    searchAppBarState: SearchAppBarState,
+    searchTextState: String
+) {
+    when (searchAppBarState) {
+        SearchAppBarState.CLOSED -> {
+            DefaultListAppBar(
+                onSearchClicked = {
+                    sharedViewModel.searchAppBarState.value = SearchAppBarState.OPENED
+                },
+                onSortClicked = { /*TODO*/ },
+                onDeleteAllClicked = { /*TODO*/ }
+            )
+        }
+        else -> {
+            SearchAppBar(
+                text = searchTextState,
+                onTextChange = { newText ->
+                    sharedViewModel.searchTextState.value = newText
+                },
+                onCloseClicked = {
+                    sharedViewModel.searchAppBarState.value = SearchAppBarState.CLOSED
+                    sharedViewModel.searchTextState.value = ""
+                },
+                onSearchClicked = { /*TODO*/ }
+            )
+        }
+    }
 }
 
 @Composable
@@ -211,7 +235,9 @@ fun SearchAppBar(
                 IconButton(
                     modifier = Modifier
                         .alpha(ContentAlpha.disabled),
-                    onClick = { /*TODO*/ }
+                    onClick = {
+                        onSearchClicked(text)
+                    }
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Search,
@@ -223,7 +249,10 @@ fun SearchAppBar(
             trailingIcon = {
                 IconButton(
                     onClick = {
-                        onCloseClicked()
+                        if (text.isNotEmpty())
+                            onTextChange("")
+                        else
+                            onCloseClicked()
                     }
                 ) {
                     Icon(
