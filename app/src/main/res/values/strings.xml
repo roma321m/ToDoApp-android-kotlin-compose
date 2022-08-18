@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ToDoApp-android-kotlin-compose</string>
     <string name="add_task_button">Add task</string>
+    <string name="search_tasks_button">Search tasks</string>
+    <string name="tasks_title">Tasks</string>
+    <string name="sort_list_button">Sort list</string>
+    <string name="delete_all_tasks_button">Delete All Tasks</string>
 </resources>

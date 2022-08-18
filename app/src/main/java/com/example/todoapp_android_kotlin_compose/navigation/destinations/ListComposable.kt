@@ -10,7 +10,7 @@ import com.example.todoapp_android_kotlin_compose.util.Constants.LIST_SCREEN
 
 
 fun NavGraphBuilder.listComposable (
-    navigateToTaskScreen: (Int) -> Unit
+    navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
     composable(
         route = LIST_SCREEN,
