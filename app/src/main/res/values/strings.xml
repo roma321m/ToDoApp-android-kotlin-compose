@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ToDoApp-android-kotlin-compose</string>
+    <string name="add_task_button">Add task</string>
 </resources>
