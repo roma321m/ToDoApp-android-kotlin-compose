@@ -2,7 +2,7 @@ package com.example.todoapp_android_kotlin_compose.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.todoapp_android_kotlin_compose.data.ToDoDatabase
+import com.example.todoapp_android_kotlin_compose.data.source.ToDoDatabase
 import com.example.todoapp_android_kotlin_compose.util.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package com.example.todoapp_android_kotlin_compose.data
+package com.example.todoapp_android_kotlin_compose.data.source
 
 import androidx.room.*
 import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
@@ -32,18 +32,12 @@ interface ToDoDao {
     fun searchDatabase(searchQuery: String): Flow<List<ToDoTask>>
 
     @Query(
-        "SELECT * FROM todo_table ORDER BY CASE " +
-                "WHEN priority LIKE 'L%' THEN 1" +
-                "WHEN priority LIKE 'M%' THEN 2" +
-                "WHEN priority LIKE 'H%' THEN 3 END"
+        "SELECT * FROM todo_table ORDER BY CASE WHEN priority LIKE 'L%' THEN 1 WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'H%' THEN 3 END"
     )
     fun sortByLowPriority(): Flow<List<ToDoTask>>
 
     @Query(
-        "SELECT * FROM todo_table ORDER BY CASE " +
-                "WHEN priority LIKE 'H%' THEN 1" +
-                "WHEN priority LIKE 'M%' THEN 2" +
-                "WHEN priority LIKE 'L%' THEN 3 END"
+        "SELECT * FROM todo_table ORDER BY CASE WHEN priority LIKE 'H%' THEN 1 WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'L%' THEN 3 END"
     )
     fun sortByHighPriority(): Flow<List<ToDoTask>>
 }

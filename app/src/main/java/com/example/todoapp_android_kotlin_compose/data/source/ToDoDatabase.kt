@@ -1,4 +1,4 @@
-package com.example.todoapp_android_kotlin_compose.data
+package com.example.todoapp_android_kotlin_compose.data.source
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
