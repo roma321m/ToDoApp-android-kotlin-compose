@@ -6,6 +6,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.app_bar.ListAppBar
+import com.example.todoapp_android_kotlin_compose.ui.screens.list.components.DisplaySnackBar
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.content.ListContent
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.fab.ListFab
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
@@ -27,9 +28,17 @@ fun ListScreen(
     val searchAppBarState: SearchAppBarState by sharedViewModel.searchAppBarState
     val searchTextState: String by sharedViewModel.searchTextState
 
-    sharedViewModel.handleDatabaseActions(action)
+    val scaffoldState = rememberScaffoldState()
+
+    DisplaySnackBar(
+        scaffoldState = scaffoldState,
+        handleDatabaseActions = { sharedViewModel.handleDatabaseActions(action = action) },
+        taskTitle = sharedViewModel.title.value,
+        action = action
+    )
 
     Scaffold(
+        scaffoldState = scaffoldState,
         topBar = {
             ListAppBar(
                 sharedViewModel = sharedViewModel,
