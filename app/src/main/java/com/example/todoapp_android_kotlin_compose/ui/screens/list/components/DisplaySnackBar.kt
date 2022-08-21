@@ -21,11 +21,20 @@ fun DisplaySnackBar(
         if (action != Action.NO_ACTION){
              scope.launch {
                  val snackarResult = scaffoldState.snackbarHostState.showSnackbar(
-                     /* Todo */
-                     message = "${action.name}: $taskTitle",
-                     actionLabel = "Ok"
+                     message = setMessage(
+                         action = action,
+                         taskTitle = taskTitle
+                     ),
+                     actionLabel = "Ok" /* Todo */
                  )
              }
         }
+    }
+}
+
+private fun setMessage(action: Action, taskTitle: String): String {
+    return when (action) {
+        Action.DELETE_ALL -> "All Tasks Removed"
+        else -> "${action.name}: $taskTitle"
     }
 }
