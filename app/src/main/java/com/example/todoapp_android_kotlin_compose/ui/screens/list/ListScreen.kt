@@ -13,7 +13,7 @@ import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState
 
 @Composable
-fun ListScreen (
+fun ListScreen(
     navigateToTaskScreen: (taskId: Int) -> Unit,
     sharedViewModel: SharedViewModel
 ) {
@@ -28,7 +28,9 @@ fun ListScreen (
                 searchTextState = searchTextState
             )
         },
-        content = {},
+        content = {
+            ListContent()
+        },
         floatingActionButton = {
             ListFab(onFabClicked = navigateToTaskScreen)
         }

@@ -284,11 +284,20 @@ fun SearchAppBar(
 @Composable
 @Preview
 private fun DefaultListAppBarPreview() {
-    DefaultListAppBar({}, {}, {})
+    DefaultListAppBar(
+        onSortClicked = {},
+        onDeleteAllClicked = {},
+        onSearchClicked = {}
+    )
 }
 
 @Composable
 @Preview
 private fun SearchAppBarPreview() {
-    SearchAppBar("", {}, {}, {})
+    SearchAppBar(
+        text = "",
+        onSearchClicked = {},
+        onCloseClicked = {},
+        onTextChange = {}
+    )
 }
