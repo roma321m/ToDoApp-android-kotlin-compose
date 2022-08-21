@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
 import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
 import com.example.todoapp_android_kotlin_compose.data.repositories.ToDoRepository
+import com.example.todoapp_android_kotlin_compose.util.Constants.MAX_TITLE_LENGTH
 import com.example.todoapp_android_kotlin_compose.util.RequestState
 import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState
 import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState.CLOSED
@@ -67,6 +68,12 @@ class SharedViewModel @Inject constructor(
             title.value = ""
             description.value = ""
             priority.value = Priority.LOW
+        }
+    }
+
+    fun updateTitle(newTitle: String) {
+        if (newTitle.length <= MAX_TITLE_LENGTH) {
+            title.value = newTitle
         }
     }
 
