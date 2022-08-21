@@ -33,6 +33,9 @@ fun ListScreen(
     DisplaySnackBar(
         scaffoldState = scaffoldState,
         handleDatabaseActions = { sharedViewModel.handleDatabaseActions(action = action) },
+        onUndoClicked = {
+            sharedViewModel.action.value = it
+        },
         taskTitle = sharedViewModel.title.value,
         action = action
     )
@@ -47,7 +50,7 @@ fun ListScreen(
             )
         },
         content = {
-            ListContent (
+            ListContent(
                 tasks = allTasks,
                 navigateToTaskScreen = navigateToTaskScreen
             )

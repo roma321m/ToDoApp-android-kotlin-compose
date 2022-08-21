@@ -117,7 +117,7 @@ class SharedViewModel @Inject constructor(
                 deleteAllTasks()
             }
             Action.UNDO -> {
-                /* Todo */
+                addTask()
             }
             else -> {
                 /* Todo */
