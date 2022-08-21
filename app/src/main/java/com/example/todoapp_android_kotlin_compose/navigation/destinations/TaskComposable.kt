@@ -9,7 +9,7 @@ import com.example.todoapp_android_kotlin_compose.util.Constants.TASK_ARGUMENT_K
 import com.example.todoapp_android_kotlin_compose.util.Constants.TASK_SCREEN
 
 
-fun NavGraphBuilder.taskComposable (
+fun NavGraphBuilder.taskComposable(
     navigateToListScreen: (Action) -> Unit
 ) {
     composable(
@@ -17,7 +17,7 @@ fun NavGraphBuilder.taskComposable (
         arguments = listOf(navArgument(TASK_ARGUMENT_KEY) {
             type = NavType.IntType
         })
-    ){
-        // TODO - ui for this screen
+    ) { navBackStackEntry ->
+        val taskId = navBackStackEntry.arguments!!.getInt(TASK_ARGUMENT_KEY)
     }
 }
