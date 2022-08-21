@@ -1,4 +1,4 @@
-package com.example.todoapp_android_kotlin_compose.ui.screens.list
+package com.example.todoapp_android_kotlin_compose.ui.screens.list.content
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

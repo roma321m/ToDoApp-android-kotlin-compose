@@ -1,4 +1,4 @@
-package com.example.todoapp_android_kotlin_compose.ui.screens.task
+package com.example.todoapp_android_kotlin_compose.ui.screens.task.app_bar
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -12,12 +12,6 @@ import com.example.todoapp_android_kotlin_compose.ui.theme.topAppBarBackgroundCo
 import com.example.todoapp_android_kotlin_compose.ui.theme.topAppBarContentColor
 import com.example.todoapp_android_kotlin_compose.util.Action
 
-@Composable
-fun TaskAppBar(
-    navigateToListScreen: (Action) -> Unit
-) {
-    NewTaskAppBar(navigateToListScreen = navigateToListScreen)
-}
 
 @Composable
 fun NewTaskAppBar(
@@ -71,4 +65,3 @@ fun AddAction(
 private fun NewTaskAppBarPreview() {
     NewTaskAppBar(navigateToListScreen = {})
 }
-

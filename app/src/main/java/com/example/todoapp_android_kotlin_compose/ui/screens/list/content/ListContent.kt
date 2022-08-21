@@ -1,10 +1,11 @@
-package com.example.todoapp_android_kotlin_compose.ui.screens.list
+package com.example.todoapp_android_kotlin_compose.ui.screens.list.content
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
+import com.example.todoapp_android_kotlin_compose.ui.screens.list.components.TaskItem
 import com.example.todoapp_android_kotlin_compose.util.RequestState
 
 @ExperimentalMaterialApi
