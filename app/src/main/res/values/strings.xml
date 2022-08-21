@@ -16,4 +16,5 @@
     <string name="close_icon">Close icon</string>
     <string name="delete_task">Delete task</string>
     <string name="update_icon">Update icon</string>
+    <string name="drop_down_arrow">Drop down arrow</string>
 </resources>
