@@ -8,4 +8,6 @@
     <string name="search_text_field_hint">Search</string>
     <string name="search_icon">Search Icon</string>
     <string name="close_button">Close</string>
+    <string name="sad_face_icon">Sad Face Icon</string>
+    <string name="empty_content">No Tasks Found</string>
 </resources>
