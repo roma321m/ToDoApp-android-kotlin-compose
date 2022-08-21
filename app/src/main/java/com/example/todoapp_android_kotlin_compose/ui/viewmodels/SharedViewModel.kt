@@ -12,6 +12,7 @@ import com.example.todoapp_android_kotlin_compose.util.Constants.MAX_TITLE_LENGT
 import com.example.todoapp_android_kotlin_compose.util.RequestState
 import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState
 import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState.CLOSED
+import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState.TRIGGERED
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,6 +34,25 @@ class SharedViewModel @Inject constructor(
 
     val searchAppBarState: MutableState<SearchAppBarState> = mutableStateOf(CLOSED)
     val searchTextState: MutableState<String> = mutableStateOf("")
+
+    private val _searchedTasks = MutableStateFlow<RequestState<List<ToDoTask>>>(RequestState.Idle)
+    val searchedTasks: StateFlow<RequestState<List<ToDoTask>>> = _searchedTasks
+
+    fun searchDatabase(searchQuery: String) {
+        _searchedTasks.value = RequestState.Loading
+        try {
+            viewModelScope.launch {
+                repository.searchDatabase(
+                    searchQuery = "%$searchQuery%"
+                ).collect { searchedTasks ->
+                    _searchedTasks.value = RequestState.Success(searchedTasks)
+                }
+            }
+        } catch (e: Exception) {
+            _searchedTasks.value = RequestState.Error(e)
+        }
+        searchAppBarState.value = TRIGGERED
+    }
 
     private val _allTasks = MutableStateFlow<RequestState<List<ToDoTask>>>(RequestState.Idle)
     val allTasks: StateFlow<RequestState<List<ToDoTask>>> = _allTasks
@@ -70,6 +90,7 @@ class SharedViewModel @Inject constructor(
             )
             repository.addTask(toDoTask = toDoTask)
         }
+        searchAppBarState.value = CLOSED
     }
 
     private fun updateTask() {
