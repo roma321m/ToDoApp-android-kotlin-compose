@@ -20,4 +20,10 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="fields_empty">Fields Empty</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="remove_task">Remove \'%1$s\'?</string>
+    <string name="remove_task_confirmation">Are you sure you want to remove \'%1$s\'?</string>
+    <string name="remove_all_tasks">Remove All Tasks?</string>
+    <string name="remove_all_tasks_confirmation">Are you sure you want to remove all tasks? There is no going back after this action!</string>
 </resources>
