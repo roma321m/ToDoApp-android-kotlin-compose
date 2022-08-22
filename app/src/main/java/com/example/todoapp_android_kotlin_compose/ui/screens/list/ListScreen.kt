@@ -5,11 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.app_bar.ListAppBar
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.components.DisplaySnackBar
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.content.ListContent
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.fab.ListFab
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
+import com.example.todoapp_android_kotlin_compose.util.Action
 import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState
 
 @ExperimentalMaterialApi
@@ -64,6 +66,10 @@ fun ListScreen(
                 sortState = sortState,
                 searchedTasks = searchedTasks,
                 searchAppBarState = searchAppBarState,
+                onSwipeToDelete = { action, task ->
+                    sharedViewModel.action.value = action
+                    sharedViewModel.updateTaskFields(task)
+                },
                 navigateToTaskScreen = navigateToTaskScreen
             )
         },

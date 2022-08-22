@@ -15,4 +15,6 @@ object Constants {
     const val PREFERENCE_KEY = "sort_state"
 
     const val MAX_TITLE_LENGTH = 20
+
+    const val ITEM_ANIMATION_TIME_MILLIS = 300
 }

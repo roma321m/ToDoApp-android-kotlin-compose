@@ -22,6 +22,8 @@ val MediumPriorityColor = Color(0xFFFFC114)
 val HighPriorityColor = Color(0xFFFF4646)
 val NonePriorityColor = MediumGray
 
+val DeleteItemBackgroundColor = Color(0xFFFF4646)
+
 val Colors.fabBackgroundColor: Color
     @Composable
     get() = if (isLight) secondaryLightColor else secondaryDarkColor

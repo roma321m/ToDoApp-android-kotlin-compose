@@ -1,22 +1,43 @@
 package com.example.todoapp_android_kotlin_compose.ui.screens.list.components
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.todoapp_android_kotlin_compose.R
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
 import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
 import com.example.todoapp_android_kotlin_compose.ui.theme.*
 
+@Composable
+fun RedBackground(degrees: Float) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(DeleteItemBackgroundColor)
+            .padding(horizontal = LARGEST_PADDING),
+        contentAlignment = Alignment.CenterEnd
+    ) {
+        Icon(
+            modifier = Modifier.rotate(degrees = degrees),
+            imageVector = Icons.Filled.Delete,
+            contentDescription = stringResource(id = R.string.delete_task),
+            tint = Color.White
+        )
+    }
+}
 
 @ExperimentalMaterialApi
 @Composable
