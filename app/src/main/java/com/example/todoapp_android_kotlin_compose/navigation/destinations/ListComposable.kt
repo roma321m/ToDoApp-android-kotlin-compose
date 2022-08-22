@@ -12,7 +12,6 @@ import com.example.todoapp_android_kotlin_compose.util.Constants.LIST_ARGUMENT_K
 import com.example.todoapp_android_kotlin_compose.util.Constants.LIST_SCREEN
 import com.example.todoapp_android_kotlin_compose.util.toAction
 
-
 @ExperimentalMaterialApi
 fun NavGraphBuilder.listComposable(
     navigateToTaskScreen: (taskId: Int) -> Unit,

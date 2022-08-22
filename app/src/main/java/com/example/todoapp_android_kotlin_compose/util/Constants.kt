@@ -5,6 +5,7 @@ object Constants {
     const val DATABASE_TABLE = "todo_table"
     const val DATABASE_NAME = "todo_database"
 
+    const val SPLASH_SCREEN = "splash"
     const val LIST_SCREEN = "list/{action}"
     const val TASK_SCREEN = "task/{taskId}"
 
@@ -17,4 +18,6 @@ object Constants {
     const val MAX_TITLE_LENGTH = 20
 
     const val ITEM_ANIMATION_TIME_MILLIS = 300
+    const val SPLASH_SCREEN_TIME_MILLIS = 3_000
+    const val SPLASH_SCREEN_ANIMATION_TIME_MILLIS = 1_000
 }
