@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/rmichail/projects/ToDoApp-android-kotlin-compose/app/src/main/res/drawable/ic_logo_dark.xml" value="0.116" />
+        <entry key="..\:/Users/rmichail/projects/ToDoApp-android-kotlin-compose/app/src/main/res/drawable/ic_logo_light.xml" value="0.116" />
         <entry key="..\:/Users/rmichail/projects/ToDoApp-android-kotlin-compose/app/src/main/res/drawable/ic_sad_face.xml" value="0.1275" />
       </map>
     </option>
