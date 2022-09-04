@@ -183,7 +183,6 @@ class SharedViewModel @Inject constructor(
                 /* Todo */
             }
         }
-        this.action.value = Action.NO_ACTION
     }
 
     fun updateTaskFields(selectedTask: ToDoTask?) {

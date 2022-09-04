@@ -17,6 +17,7 @@ import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState
 @ExperimentalMaterialApi
 @Composable
 fun ListScreen(
+    action: Action,
     navigateToTaskScreen: (taskId: Int) -> Unit,
     sharedViewModel: SharedViewModel
 ) {
@@ -24,8 +25,10 @@ fun ListScreen(
         sharedViewModel.getAllTasks()
         sharedViewModel.readSortState()
     }
-
-    val action by sharedViewModel.action
+    
+    LaunchedEffect(key1 = action) {
+        sharedViewModel.handleDatabaseActions(action = action)
+    }
 
     val allTasks by sharedViewModel.allTasks.collectAsState()
     val searchedTasks by sharedViewModel.searchedTasks.collectAsState()
@@ -41,7 +44,7 @@ fun ListScreen(
 
     DisplaySnackBar(
         scaffoldState = scaffoldState,
-        handleDatabaseActions = { sharedViewModel.handleDatabaseActions(action = action) },
+        onComplete = { sharedViewModel.action.value = it },
         onUndoClicked = {
             sharedViewModel.action.value = it
         },

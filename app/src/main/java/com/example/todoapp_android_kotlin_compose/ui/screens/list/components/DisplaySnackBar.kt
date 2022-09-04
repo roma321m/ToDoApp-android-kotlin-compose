@@ -11,12 +11,11 @@ import kotlinx.coroutines.launch
 @Composable
 fun DisplaySnackBar(
     scaffoldState: ScaffoldState,
-    handleDatabaseActions: () -> Unit,
+    onComplete: (Action) -> Unit,
     onUndoClicked: (Action) -> Unit,
     taskTitle: String,
     action: Action
 ) {
-    handleDatabaseActions()
 
     val scope = rememberCoroutineScope()
     LaunchedEffect(key1 = action) {
@@ -35,6 +34,7 @@ fun DisplaySnackBar(
                      onUndoClicked = onUndoClicked
                  )
              }
+            onComplete(Action.NO_ACTION)
         }
     }
 }
