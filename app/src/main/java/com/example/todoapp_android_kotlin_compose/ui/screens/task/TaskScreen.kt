@@ -11,6 +11,7 @@ import com.example.todoapp_android_kotlin_compose.data.models.Priority
 import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
 import com.example.todoapp_android_kotlin_compose.ui.screens.task.app_bar.TaskAppBar
 import com.example.todoapp_android_kotlin_compose.ui.screens.task.content.TaskContent
+import com.example.todoapp_android_kotlin_compose.ui.screens.task.util.BackHandler
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.example.todoapp_android_kotlin_compose.util.Action
 
@@ -25,6 +26,8 @@ fun TaskScreen(
     val priority: Priority by sharedViewModel.priority
 
     val context = LocalContext.current
+    
+    BackHandler (onBackPressed = { navigateToListScreen(Action.NO_ACTION) })
 
     Scaffold(
         topBar = {
