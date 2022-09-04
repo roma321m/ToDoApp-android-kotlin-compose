@@ -2,6 +2,7 @@ package com.example.todoapp_android_kotlin_compose.ui.screens.task
 
 import android.content.Context
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -11,7 +12,6 @@ import com.example.todoapp_android_kotlin_compose.data.models.Priority
 import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
 import com.example.todoapp_android_kotlin_compose.ui.screens.task.app_bar.TaskAppBar
 import com.example.todoapp_android_kotlin_compose.ui.screens.task.content.TaskContent
-import com.example.todoapp_android_kotlin_compose.ui.screens.task.util.BackHandler
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.example.todoapp_android_kotlin_compose.util.Action
 
@@ -27,7 +27,7 @@ fun TaskScreen(
 
     val context = LocalContext.current
     
-    BackHandler (onBackPressed = { navigateToListScreen(Action.NO_ACTION) })
+    BackHandler { navigateToListScreen(Action.NO_ACTION) }
 
     Scaffold(
         topBar = {
