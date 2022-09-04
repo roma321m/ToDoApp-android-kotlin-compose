@@ -1,18 +1,23 @@
 package com.example.todoapp_android_kotlin_compose.navigation.destinations
 
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
-import androidx.navigation.compose.composable
+import com.google.accompanist.navigation.animation.composable
 import androidx.navigation.navArgument
 import com.example.todoapp_android_kotlin_compose.ui.screens.task.TaskScreen
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.example.todoapp_android_kotlin_compose.util.Action
+import com.example.todoapp_android_kotlin_compose.util.Constants.ENTER_NAVIGATION_ANIMATION_TIME_MILLIS
 import com.example.todoapp_android_kotlin_compose.util.Constants.TASK_ARGUMENT_KEY
 import com.example.todoapp_android_kotlin_compose.util.Constants.TASK_SCREEN
 
+@ExperimentalAnimationApi
 fun NavGraphBuilder.taskComposable(
     sharedViewModel: SharedViewModel,
     navigateToListScreen: (Action) -> Unit
@@ -21,7 +26,15 @@ fun NavGraphBuilder.taskComposable(
         route = TASK_SCREEN,
         arguments = listOf(navArgument(TASK_ARGUMENT_KEY) {
             type = NavType.IntType
-        })
+        }),
+        enterTransition = {
+            slideInHorizontally(
+                animationSpec = tween(
+                    durationMillis = ENTER_NAVIGATION_ANIMATION_TIME_MILLIS
+                ),
+                initialOffsetX = { fullWidth -> -fullWidth }
+            )
+        }
     ) { navBackStackEntry ->
         val taskId = navBackStackEntry.arguments!!.getInt(TASK_ARGUMENT_KEY)
         LaunchedEffect(key1 = taskId) {

@@ -1,16 +1,18 @@
 package com.example.todoapp_android_kotlin_compose.navigation
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
 import com.example.todoapp_android_kotlin_compose.navigation.destinations.listComposable
 import com.example.todoapp_android_kotlin_compose.navigation.destinations.splashComposable
 import com.example.todoapp_android_kotlin_compose.navigation.destinations.taskComposable
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.example.todoapp_android_kotlin_compose.util.Constants.SPLASH_SCREEN
+import com.google.accompanist.navigation.animation.AnimatedNavHost
 
+@ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
 fun SetupNavigation(
@@ -21,7 +23,7 @@ fun SetupNavigation(
         Screens(navController = navController)
     }
 
-    NavHost(
+    AnimatedNavHost(
         navController = navController,
         startDestination = SPLASH_SCREEN
     ) {
