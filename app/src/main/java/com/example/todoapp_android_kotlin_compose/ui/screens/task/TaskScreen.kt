@@ -3,9 +3,11 @@ package com.example.todoapp_android_kotlin_compose.ui.screens.task
 import android.content.Context
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.example.todoapp_android_kotlin_compose.R
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
@@ -48,6 +50,7 @@ fun TaskScreen(
         },
         content = {
             TaskContent(
+                modifier = Modifier.padding(it),
                 title = title,
                 onTitleChange = { title ->
                     sharedViewModel.updateTitle(newTitle = title)

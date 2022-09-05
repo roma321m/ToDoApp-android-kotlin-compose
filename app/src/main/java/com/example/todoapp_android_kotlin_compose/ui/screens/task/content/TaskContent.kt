@@ -18,6 +18,7 @@ import com.example.todoapp_android_kotlin_compose.util.Constants.MAX_TITLE_LENGT
 
 @Composable
 fun TaskContent(
+    modifier: Modifier,
     title: String,
     onTitleChange: (String) -> Unit,
     description: String,
@@ -26,7 +27,7 @@ fun TaskContent(
     onPrioritySelected: (Priority) -> Unit,
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
             .padding(all = LARGE_PADDING)
@@ -80,6 +81,7 @@ fun TaskContent(
 @Composable
 fun TaskContentPreview() {
     TaskContent(
+        modifier = Modifier,
         title = "",
         onTitleChange = {},
         description = "",

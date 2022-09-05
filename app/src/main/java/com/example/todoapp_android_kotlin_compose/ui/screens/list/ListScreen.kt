@@ -1,11 +1,12 @@
 package com.example.todoapp_android_kotlin_compose.ui.screens.list
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
+import androidx.compose.ui.Modifier
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.app_bar.ListAppBar
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.components.DisplaySnackBar
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.content.ListContent
@@ -60,6 +61,7 @@ fun ListScreen(
         },
         content = {
             ListContent(
+                modifier = Modifier.padding(it),
                 allTasks = allTasks,
                 lowPriorityTasks = lowPriorityTasks,
                 highPriorityTasks = highPriorityTasks,

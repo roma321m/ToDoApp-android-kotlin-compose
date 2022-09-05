@@ -20,9 +20,9 @@ import com.example.todoapp_android_kotlin_compose.ui.theme.MediumGray
 import com.example.todoapp_android_kotlin_compose.ui.theme.SAD_FACE_ICON_SIZE
 
 @Composable
-fun EmptyContent () {
+fun EmptyContent (modifier: Modifier) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background),
         verticalArrangement = Arrangement.Center,
@@ -47,5 +47,5 @@ fun EmptyContent () {
 @Preview
 @Composable
 fun EmptyContentPreview() {
-    EmptyContent()
+    EmptyContent(modifier = Modifier)
 }

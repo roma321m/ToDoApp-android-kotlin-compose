@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
 import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.components.RedBackground
@@ -24,6 +25,7 @@ import kotlinx.coroutines.launch
 @ExperimentalMaterialApi
 @Composable
 fun ListContent(
+    modifier: Modifier,
     searchedTasks: RequestState<List<ToDoTask>>,
     searchAppBarState: SearchAppBarState,
     lowPriorityTasks: List<ToDoTask>,
@@ -38,6 +40,7 @@ fun ListContent(
             searchAppBarState == SearchAppBarState.TRIGGERED -> {
                 if (searchedTasks is RequestState.Success) {
                     HandleListContent(
+                        modifier = modifier,
                         tasks = searchedTasks.data,
                         onSwipeToDelete = onSwipeToDelete,
                         navigateToTaskScreen = navigateToTaskScreen
@@ -47,6 +50,7 @@ fun ListContent(
             sortState.data == Priority.NONE -> {
                 if (allTasks is RequestState.Success) {
                     HandleListContent(
+                        modifier = modifier,
                         tasks = allTasks.data,
                         onSwipeToDelete = onSwipeToDelete,
                         navigateToTaskScreen = navigateToTaskScreen
@@ -55,6 +59,7 @@ fun ListContent(
             }
             sortState.data == Priority.LOW -> {
                 HandleListContent(
+                    modifier = modifier,
                     tasks = lowPriorityTasks,
                     onSwipeToDelete = onSwipeToDelete,
                     navigateToTaskScreen = navigateToTaskScreen
@@ -62,6 +67,7 @@ fun ListContent(
             }
             sortState.data == Priority.HIGH -> {
                 HandleListContent(
+                    modifier = modifier,
                     tasks = highPriorityTasks,
                     onSwipeToDelete = onSwipeToDelete,
                     navigateToTaskScreen = navigateToTaskScreen
@@ -74,14 +80,16 @@ fun ListContent(
 @ExperimentalMaterialApi
 @Composable
 fun HandleListContent(
+    modifier: Modifier,
     tasks: List<ToDoTask>,
     onSwipeToDelete: (Action, ToDoTask) -> Unit,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
     if (tasks.isEmpty()) {
-        EmptyContent()
+        EmptyContent(modifier = modifier)
     } else {
         DisplayTasks(
+            modifier = modifier,
             tasks = tasks,
             onSwipeToDelete = onSwipeToDelete,
             navigateToTaskScreen = navigateToTaskScreen
@@ -93,12 +101,14 @@ fun HandleListContent(
 @ExperimentalMaterialApi
 @Composable
 fun DisplayTasks(
+    modifier: Modifier,
     tasks: List<ToDoTask>,
     onSwipeToDelete: (Action, ToDoTask) -> Unit,
     navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    LazyColumn {
-        items(items = tasks,
+    LazyColumn(modifier = modifier) {
+        items(
+            items = tasks,
             key = { task ->
                 task.id
             }
