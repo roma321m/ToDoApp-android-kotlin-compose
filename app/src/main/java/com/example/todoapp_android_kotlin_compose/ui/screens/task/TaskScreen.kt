@@ -21,9 +21,9 @@ fun TaskScreen(
     sharedViewModel: SharedViewModel,
     navigateToListScreen: (Action) -> Unit
 ) {
-    val title: String by sharedViewModel.title
-    val description: String by sharedViewModel.description
-    val priority: Priority by sharedViewModel.priority
+    val title: String = sharedViewModel.title
+    val description: String = sharedViewModel.description
+    val priority: Priority = sharedViewModel.priority
 
     val context = LocalContext.current
     
@@ -49,16 +49,16 @@ fun TaskScreen(
         content = {
             TaskContent(
                 title = title,
-                onTitleChange = {
-                    sharedViewModel.updateTitle(it)
+                onTitleChange = { title ->
+                    sharedViewModel.updateTitle(newTitle = title)
                 },
                 description = description,
-                onDescriptionChange = {
-                    sharedViewModel.description.value = it
+                onDescriptionChange = { description ->
+                    sharedViewModel.updateDescription(newDescription = description)
                 },
                 priority = priority,
-                onPrioritySelected = {
-                    sharedViewModel.priority.value = it
+                onPrioritySelected = { priority ->
+                    sharedViewModel.updatePriority(newPriority = priority)
                 }
             )
         }
