@@ -27,7 +27,7 @@ fun RedBackground(degrees: Float) {
         modifier = Modifier
             .fillMaxSize()
             .background(DeleteItemBackgroundColor)
-            .padding(horizontal = LARGEST_PADDING),
+            .padding(horizontal = MaterialTheme.spacing.extraLarge),
         contentAlignment = Alignment.CenterEnd
     ) {
         Icon(
@@ -50,14 +50,14 @@ fun TaskItem(
             .fillMaxWidth(),
         color = MaterialTheme.colors.taskItemBackgroundColor,
         shape = RectangleShape,
-        elevation = TASK_ITEM_ELEVATION,
+        elevation = MaterialTheme.elevation.extraSmall,
         onClick = {
             navigateToTaskScreen(toDoTask.id)
         }
     ) {
         Column(
             modifier = Modifier
-                .padding(all = LARGE_PADDING)
+                .padding(all = MaterialTheme.spacing.large)
                 .fillMaxWidth()
         ) {
             Row {

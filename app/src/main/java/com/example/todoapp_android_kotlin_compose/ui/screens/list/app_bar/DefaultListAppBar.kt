@@ -13,8 +13,8 @@ import com.example.todoapp_android_kotlin_compose.R
 import com.example.todoapp_android_kotlin_compose.components.DisplayAlertDialog
 import com.example.todoapp_android_kotlin_compose.components.PriorityItem
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
-import com.example.todoapp_android_kotlin_compose.ui.theme.MEDIUM_PADDING
 import com.example.todoapp_android_kotlin_compose.ui.theme.Typography
+import com.example.todoapp_android_kotlin_compose.ui.theme.spacing
 import com.example.todoapp_android_kotlin_compose.ui.theme.topAppBarBackgroundColor
 import com.example.todoapp_android_kotlin_compose.ui.theme.topAppBarContentColor
 
@@ -142,7 +142,7 @@ fun DeleteAllAction(
                 }
             ) {
                 Text(
-                    modifier = Modifier.padding(MEDIUM_PADDING),
+                    modifier = Modifier.padding(MaterialTheme.spacing.medium),
                     text = stringResource(R.string.delete_all_tasks_button),
                     style = Typography.subtitle2
                 )

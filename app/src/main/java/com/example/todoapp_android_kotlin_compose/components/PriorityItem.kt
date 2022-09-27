@@ -11,9 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
-import com.example.todoapp_android_kotlin_compose.ui.theme.LARGE_PADDING
 import com.example.todoapp_android_kotlin_compose.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.example.todoapp_android_kotlin_compose.ui.theme.Typography
+import com.example.todoapp_android_kotlin_compose.ui.theme.spacing
 
 @Composable
 fun PriorityItem(priority: Priority) {
@@ -25,7 +25,7 @@ fun PriorityItem(priority: Priority) {
         }
         Text(
             modifier = Modifier
-                .padding(start = LARGE_PADDING),
+                .padding(start = MaterialTheme.spacing.large),
             text = priority.name,
             style = Typography.subtitle2,
             color = MaterialTheme.colors.onSurface

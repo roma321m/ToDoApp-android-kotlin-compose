@@ -12,8 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.todoapp_android_kotlin_compose.R
 import com.example.todoapp_android_kotlin_compose.components.PriorityDropDown
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
-import com.example.todoapp_android_kotlin_compose.ui.theme.LARGE_PADDING
-import com.example.todoapp_android_kotlin_compose.ui.theme.MEDIUM_PADDING
+import com.example.todoapp_android_kotlin_compose.ui.theme.spacing
 import com.example.todoapp_android_kotlin_compose.util.Constants.MAX_TITLE_LENGTH
 
 @Composable
@@ -30,7 +29,7 @@ fun TaskContent(
         modifier = modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
-            .padding(all = LARGE_PADDING)
+            .padding(all = MaterialTheme.spacing.large)
     ) {
         OutlinedTextField(
             modifier = Modifier
@@ -48,14 +47,14 @@ fun TaskContent(
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(end = MEDIUM_PADDING),
+                .padding(end = MaterialTheme.spacing.medium),
             text = "${title.length} / $MAX_TITLE_LENGTH",
             textAlign = TextAlign.End,
             style = MaterialTheme.typography.caption,
             color = if (title.length >= MAX_TITLE_LENGTH) Color.Red else Color.LightGray
         )
         Divider(
-            modifier = Modifier.height(MEDIUM_PADDING),
+            modifier = Modifier.height(MaterialTheme.spacing.medium),
             color = MaterialTheme.colors.background
         )
         PriorityDropDown(
