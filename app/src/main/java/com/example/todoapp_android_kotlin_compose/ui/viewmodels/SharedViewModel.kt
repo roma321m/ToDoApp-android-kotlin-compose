@@ -196,20 +196,20 @@ class SharedViewModel @Inject constructor(
             Action.UNDO -> {
                 addTask()
             }
-            else -> {}
+            Action.NO_ACTION -> {}
         }
     }
 
     fun updateTaskFields(selectedTask: ToDoTask?) {
         if (selectedTask != null) {
             id = selectedTask.id
-            title = selectedTask.title
-            description = selectedTask.description
+            updateTitle(newTitle = selectedTask.title)
+            updateDescription(newDescription = selectedTask.description)
             priority = selectedTask.priority
         } else {
             id = 0
-            title = ""
-            description = ""
+            updateTitle(newTitle = "")
+            updateDescription(newDescription = "")
             priority = Priority.LOW
         }
     }
