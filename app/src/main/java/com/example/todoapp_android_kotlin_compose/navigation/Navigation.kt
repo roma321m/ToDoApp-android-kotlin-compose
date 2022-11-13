@@ -5,11 +5,11 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
+import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.SPLASH_SCREEN
 import com.example.todoapp_android_kotlin_compose.navigation.destinations.listComposable
 import com.example.todoapp_android_kotlin_compose.navigation.destinations.splashComposable
 import com.example.todoapp_android_kotlin_compose.navigation.destinations.taskComposable
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
-import com.example.todoapp_android_kotlin_compose.util.Constants.SPLASH_SCREEN
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 
 @ExperimentalAnimationApi

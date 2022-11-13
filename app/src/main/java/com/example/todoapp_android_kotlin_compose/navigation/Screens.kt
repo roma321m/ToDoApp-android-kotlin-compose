@@ -2,10 +2,18 @@ package com.example.todoapp_android_kotlin_compose.navigation
 
 import androidx.navigation.NavController
 import com.example.todoapp_android_kotlin_compose.util.Action
-import com.example.todoapp_android_kotlin_compose.util.Constants.LIST_SCREEN
-import com.example.todoapp_android_kotlin_compose.util.Constants.SPLASH_SCREEN
 
 class Screens(navController: NavController) {
+
+    companion object {
+        const val SPLASH_SCREEN = "splash"
+        const val LIST_SCREEN = "list/{action}"
+        const val TASK_SCREEN = "task/{taskId}"
+
+        const val LIST_ARGUMENT_KEY = "action"
+        const val TASK_ARGUMENT_KEY = "taskId"
+    }
+
     val splash: () -> Unit = {
         navController.navigate(route = "list/${Action.NO_ACTION}") {
             popUpTo(SPLASH_SCREEN) { inclusive = true }

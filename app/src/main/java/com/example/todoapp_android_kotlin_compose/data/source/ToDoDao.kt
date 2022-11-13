@@ -6,6 +6,12 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao // Data Access Object
 interface ToDoDao {
+
+    companion object {
+        const val DATABASE_TABLE = "todo_table"
+        const val DATABASE_NAME = "todo_database"
+    }
+
     // All the functions need to be asynchronous.
     // When using Flow - the function is automatically using kotlin coroutine and the function is asynchronous.
     // When we don't use Flow, need to make the function suspended.

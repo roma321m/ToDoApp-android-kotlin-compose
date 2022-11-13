@@ -8,8 +8,7 @@ import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
-import com.example.todoapp_android_kotlin_compose.util.Constants.PREFERENCE_KEY
-import com.example.todoapp_android_kotlin_compose.util.Constants.PREFERENCE_NAME
+import com.example.todoapp_android_kotlin_compose.data.repositories.DataStoreRepository.Companion.PREFERENCE_NAME
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
@@ -24,6 +23,11 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = PRE
 class DataStoreRepository @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
+
+    companion object {
+        const val PREFERENCE_NAME = "todo_preferences"
+        const val PREFERENCE_KEY = "sort_state"
+    }
 
     private object PreferenceKeys {
         val sortKey = stringPreferencesKey(name = PREFERENCE_KEY)

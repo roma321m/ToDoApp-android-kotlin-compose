@@ -4,9 +4,9 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideOutVertically
 import androidx.navigation.NavGraphBuilder
+import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.SPLASH_SCREEN
 import com.google.accompanist.navigation.animation.composable
 import com.example.todoapp_android_kotlin_compose.ui.screens.splash.SplashScreen
-import com.example.todoapp_android_kotlin_compose.util.Constants.SPLASH_SCREEN
 import com.example.todoapp_android_kotlin_compose.util.Constants.EXIT_NAVIGATION_ANIMATION_TIME_MILLIS
 
 @ExperimentalAnimationApi

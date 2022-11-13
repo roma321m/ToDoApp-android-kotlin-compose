@@ -2,7 +2,7 @@ package com.example.todoapp_android_kotlin_compose.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.todoapp_android_kotlin_compose.util.Constants.DATABASE_TABLE
+import com.example.todoapp_android_kotlin_compose.data.source.ToDoDao.Companion.DATABASE_TABLE
 
 @Entity(tableName = DATABASE_TABLE)
 data class ToDoTask(

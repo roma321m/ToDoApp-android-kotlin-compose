@@ -11,11 +11,11 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import com.google.accompanist.navigation.animation.composable
 import androidx.navigation.navArgument
+import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.LIST_ARGUMENT_KEY
+import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.LIST_SCREEN
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.ListScreen
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.example.todoapp_android_kotlin_compose.util.Action
-import com.example.todoapp_android_kotlin_compose.util.Constants.LIST_ARGUMENT_KEY
-import com.example.todoapp_android_kotlin_compose.util.Constants.LIST_SCREEN
 import com.example.todoapp_android_kotlin_compose.util.toAction
 
 @ExperimentalAnimationApi
