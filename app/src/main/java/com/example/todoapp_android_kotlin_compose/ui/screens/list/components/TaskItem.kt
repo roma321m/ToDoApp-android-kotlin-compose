@@ -15,7 +15,6 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.todoapp_android_kotlin_compose.R
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
 import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
@@ -95,7 +94,7 @@ fun TaskItem(
 }
 
 @ExperimentalMaterialApi
-@Preview
+@DevicePreviews
 @Composable
 fun TaskItemPreview() {
     TaskItem(

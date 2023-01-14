@@ -6,8 +6,8 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.todoapp_android_kotlin_compose.R
+import com.example.todoapp_android_kotlin_compose.ui.theme.DevicePreviews
 import com.example.todoapp_android_kotlin_compose.ui.theme.topAppBarBackgroundColor
 import com.example.todoapp_android_kotlin_compose.ui.theme.topAppBarContentColor
 import com.example.todoapp_android_kotlin_compose.util.Action
@@ -61,7 +61,7 @@ fun AddAction(
 }
 
 @Composable
-@Preview
+@DevicePreviews
 private fun NewTaskAppBarPreview() {
     NewTaskAppBar(navigateToListScreen = {})
 }

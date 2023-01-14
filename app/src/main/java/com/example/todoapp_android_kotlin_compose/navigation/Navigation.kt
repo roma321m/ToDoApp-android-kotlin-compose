@@ -5,9 +5,8 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
-import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.SPLASH_SCREEN
+import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.LIST_SCREEN
 import com.example.todoapp_android_kotlin_compose.navigation.destinations.listComposable
-import com.example.todoapp_android_kotlin_compose.navigation.destinations.splashComposable
 import com.example.todoapp_android_kotlin_compose.navigation.destinations.taskComposable
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -25,11 +24,11 @@ fun SetupNavigation(
 
     AnimatedNavHost(
         navController = navController,
-        startDestination = SPLASH_SCREEN
+        startDestination = LIST_SCREEN
     ) {
-        splashComposable(
-            navigateToListScreen = screen.splash
-        )
+//        splashComposable(
+//            navigateToListScreen = screen.splash
+//        )
         listComposable(
             navigateToTaskScreen = screen.list,
             sharedViewModel = sharedViewModel

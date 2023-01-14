@@ -14,8 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.todoapp_android_kotlin_compose.R
+import com.example.todoapp_android_kotlin_compose.ui.theme.DevicePreviews
 import com.example.todoapp_android_kotlin_compose.ui.theme.MediumGray
 import com.example.todoapp_android_kotlin_compose.ui.theme.SAD_FACE_ICON_SIZE
 
@@ -44,7 +44,7 @@ fun EmptyContent (modifier: Modifier) {
     }
 }
 
-@Preview
+@DevicePreviews
 @Composable
 fun EmptyContentPreview() {
     EmptyContent(modifier = Modifier)

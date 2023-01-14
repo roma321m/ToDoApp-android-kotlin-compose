@@ -24,9 +24,9 @@ val NonePriorityColor = MediumGray
 
 val DeleteItemBackgroundColor = Color(0xFFFF4646)
 
-val Colors.splashScreenBackground: Color
-    @Composable
-    get() = if (isLight) primaryDarkColor else Color.Black
+//val Colors.splashScreenBackground: Color
+//    @Composable
+//    get() = if (isLight) primaryDarkColor else Color.Black
 
 val Colors.fabBackgroundColor: Color
     @Composable

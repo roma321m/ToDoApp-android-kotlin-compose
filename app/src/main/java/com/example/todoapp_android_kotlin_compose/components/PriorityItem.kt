@@ -9,8 +9,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
+import com.example.todoapp_android_kotlin_compose.ui.theme.DevicePreviews
 import com.example.todoapp_android_kotlin_compose.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.example.todoapp_android_kotlin_compose.ui.theme.Typography
 import com.example.todoapp_android_kotlin_compose.ui.theme.spacing
@@ -34,7 +34,7 @@ fun PriorityItem(priority: Priority) {
 }
 
 @Composable
-@Preview
+@DevicePreviews
 fun PriorityItemPreview(){
     PriorityItem(Priority.HIGH)
 }

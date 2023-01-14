@@ -8,7 +8,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
-import com.google.accompanist.navigation.animation.composable
 import androidx.navigation.navArgument
 import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.TASK_ARGUMENT_KEY
 import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.TASK_SCREEN
@@ -16,6 +15,7 @@ import com.example.todoapp_android_kotlin_compose.ui.screens.task.TaskScreen
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.example.todoapp_android_kotlin_compose.util.Action
 import com.example.todoapp_android_kotlin_compose.util.Constants.ENTER_NAVIGATION_ANIMATION_TIME_MILLIS
+import com.google.accompanist.navigation.animation.composable
 
 @ExperimentalAnimationApi
 fun NavGraphBuilder.taskComposable(

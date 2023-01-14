@@ -2,16 +2,19 @@ package com.example.todoapp_android_kotlin_compose.ui.screens.task.content
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.todoapp_android_kotlin_compose.R
 import com.example.todoapp_android_kotlin_compose.components.PriorityDropDown
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
+import com.example.todoapp_android_kotlin_compose.ui.theme.DevicePreviews
 import com.example.todoapp_android_kotlin_compose.ui.theme.spacing
 import com.example.todoapp_android_kotlin_compose.util.Constants.MAX_TITLE_LENGTH
 
@@ -76,7 +79,7 @@ fun TaskContent(
     }
 }
 
-@Preview
+@DevicePreviews
 @Composable
 fun TaskContentPreview() {
     TaskContent(

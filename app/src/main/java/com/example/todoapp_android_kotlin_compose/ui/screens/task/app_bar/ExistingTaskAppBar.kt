@@ -5,18 +5,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.todoapp_android_kotlin_compose.R
 import com.example.todoapp_android_kotlin_compose.components.DisplayAlertDialog
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
 import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
+import com.example.todoapp_android_kotlin_compose.ui.theme.DevicePreviews
 import com.example.todoapp_android_kotlin_compose.ui.theme.topAppBarBackgroundColor
 import com.example.todoapp_android_kotlin_compose.ui.theme.topAppBarContentColor
 import com.example.todoapp_android_kotlin_compose.util.Action
@@ -106,7 +102,7 @@ fun UpdateAction(
 }
 
 @Composable
-@Preview
+@DevicePreviews
 private fun ExistingTaskAppBarPreview() {
     ExistingTaskAppBar(
         selectedTask = ToDoTask(0, "Roman", "Some random text", Priority.MEDIUM),

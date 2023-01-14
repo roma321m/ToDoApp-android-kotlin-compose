@@ -15,8 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.todoapp_android_kotlin_compose.R
+import com.example.todoapp_android_kotlin_compose.ui.theme.DevicePreviews
 import com.example.todoapp_android_kotlin_compose.ui.theme.TOP_APP_BAR_HEIGHT
 import com.example.todoapp_android_kotlin_compose.ui.theme.topAppBarBackgroundColor
 import com.example.todoapp_android_kotlin_compose.ui.theme.topAppBarContentColor
@@ -107,7 +107,7 @@ fun SearchAppBar(
 }
 
 @Composable
-@Preview
+@DevicePreviews
 private fun SearchAppBarPreview() {
     SearchAppBar(
         text = "",
