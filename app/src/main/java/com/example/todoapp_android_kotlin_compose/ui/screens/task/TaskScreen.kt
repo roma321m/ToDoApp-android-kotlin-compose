@@ -11,6 +11,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.todoapp_android_kotlin_compose.R
 import com.example.todoapp_android_kotlin_compose.data.models.Priority
 import com.example.todoapp_android_kotlin_compose.data.models.ToDoTask
+import com.example.todoapp_android_kotlin_compose.ui.ads.AdMobBanner
 import com.example.todoapp_android_kotlin_compose.ui.screens.task.app_bar.TaskAppBar
 import com.example.todoapp_android_kotlin_compose.ui.screens.task.content.TaskContent
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
@@ -63,7 +64,8 @@ fun TaskScreen(
                     sharedViewModel.updatePriority(newPriority = priority)
                 }
             )
-        }
+        },
+        bottomBar = { AdMobBanner() }
     )
 }
 

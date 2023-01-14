@@ -9,6 +9,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import com.example.todoapp_android_kotlin_compose.ui.ads.AdMobBanner
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.app_bar.ListAppBar
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.components.DisplaySnackBar
 import com.example.todoapp_android_kotlin_compose.ui.screens.list.content.ListContent
@@ -80,6 +81,7 @@ fun ListScreen(
         },
         floatingActionButton = {
             ListFab(onFabClicked = navigateToTaskScreen)
-        }
+        },
+        bottomBar = { AdMobBanner() }
     )
 }

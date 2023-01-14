@@ -16,7 +16,8 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 @Composable
 fun SetupNavigation(
     navController: NavHostController,
-    sharedViewModel: SharedViewModel
+    sharedViewModel: SharedViewModel,
+    showAd: () -> Unit
 ) {
     val screen = remember(navController) {
         Screens(navController = navController)
@@ -32,7 +33,8 @@ fun SetupNavigation(
         )
         taskComposable(
             navigateToListScreen = screen.task,
-            sharedViewModel = sharedViewModel
+            sharedViewModel = sharedViewModel,
+            showAd = showAd
         )
     }
 }

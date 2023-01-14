@@ -14,6 +14,7 @@
         android:theme="@style/Theme.ToDoAppandroidkotlincompose"
         tools:targetApi="31">
         <activity
+            android:hardwareAccelerated="true"
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
@@ -24,6 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3415507289616474~7514623397"/>
     </application>
 
 </manifest>
