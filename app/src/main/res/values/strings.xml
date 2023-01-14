@@ -27,4 +27,9 @@
     <string name="remove_all_tasks">Remove All Tasks?</string>
     <string name="remove_all_tasks_confirmation">Are you sure you want to remove all tasks? There is no going back after this action!</string>
     <string name="splash_logo">Splash Logo</string>
+    <string name="more_actions">More actions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="about">About</string>
+    <string name="terms_of_use">Terms Of Use</string>
+    <string name="terms_and_conditions">Terms And Conditions</string>
 </resources>

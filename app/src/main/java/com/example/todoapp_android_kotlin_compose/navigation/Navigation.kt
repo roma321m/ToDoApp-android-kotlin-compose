@@ -26,9 +26,6 @@ fun SetupNavigation(
         navController = navController,
         startDestination = LIST_SCREEN
     ) {
-//        splashComposable(
-//            navigateToListScreen = screen.splash
-//        )
         listComposable(
             navigateToTaskScreen = screen.list,
             sharedViewModel = sharedViewModel
