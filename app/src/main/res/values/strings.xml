@@ -32,4 +32,11 @@
     <string name="about">About</string>
     <string name="terms_of_use">Terms Of Use</string>
     <string name="terms_and_conditions">Terms And Conditions</string>
+    <string name="shop">Shop</string>
+    <string name="no_ads">No Ads</string>
+    <string name="go_premium">Go Premium</string>
+    <string name="remove_ads">Remove Ads</string>
+    <string name="remove_premium">Remove Premium</string>
+    <string name="p_p_uri">https://sites.google.com/view/todo-app-1/%D7%91%D7%99%D7%AA</string>
+    <string name="t_c_uri">https://sites.google.com/view/todo-app-2/%D7%91%D7%99%D7%AA</string>
 </resources>

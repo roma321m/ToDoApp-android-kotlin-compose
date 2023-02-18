@@ -1,5 +1,6 @@
 package com.example.todoapp_android_kotlin_compose.ui.viewmodels
 
+import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -15,6 +16,9 @@ import com.example.todoapp_android_kotlin_compose.util.RequestState
 import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState
 import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState.CLOSED
 import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState.TRIGGERED
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -46,6 +50,12 @@ class SharedViewModel @Inject constructor(
         private set
 
     var searchTextState by mutableStateOf("")
+        private set
+
+    var removeAdsActive by mutableStateOf(false)
+        private set
+
+    var premiumActive by mutableStateOf(false)
         private set
 
     private val _searchedTasks = MutableStateFlow<RequestState<List<ToDoTask>>>(RequestState.Idle)
@@ -198,6 +208,28 @@ class SharedViewModel @Inject constructor(
             }
             Action.NO_ACTION -> {}
         }
+    }
+
+    fun removeAds() {
+        removeAdsActive = true
+        // todo - save to db
+    }
+
+    fun premium(context: Context) {
+        premiumActive = !premiumActive
+
+        val gso: GoogleSignInOptions =
+            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail()
+                .build()
+        val gsc: GoogleSignInClient = GoogleSignIn.getClient(context, gso)
+
+        if (premiumActive) {
+            val intent = gsc.signInIntent
+            context.startActivity(intent)
+        } else {
+            gsc.signOut()
+        }
+        // todo - save to db
     }
 
     fun updateTaskFields(selectedTask: ToDoTask?) {

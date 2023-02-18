@@ -65,7 +65,11 @@ fun TaskScreen(
                 }
             )
         },
-        bottomBar = { AdMobBanner() }
+        bottomBar = {
+            if (sharedViewModel.removeAdsActive.not() && sharedViewModel.premiumActive.not()) {
+                AdMobBanner()
+            }
+        }
     )
 }
 

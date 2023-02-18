@@ -1,9 +1,11 @@
 package com.example.todoapp_android_kotlin_compose.ui.screens.list.app_bar
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.example.todoapp_android_kotlin_compose.util.Action
 import com.example.todoapp_android_kotlin_compose.util.SearchAppBarState
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Composable
 fun ListAppBar(
@@ -11,6 +13,7 @@ fun ListAppBar(
     searchAppBarState: SearchAppBarState,
     searchTextState: String
 ) {
+    val context = LocalContext.current
     when (searchAppBarState) {
         SearchAppBarState.CLOSED -> {
             DefaultListAppBar(
@@ -20,7 +23,11 @@ fun ListAppBar(
                 onSortClicked = { sharedViewModel.persistSortState(it) },
                 onDeleteAllConfirmed = {
                     sharedViewModel.updateAction(newAction = Action.DELETE_ALL)
-                }
+                },
+                onGoPremiumClicked = { sharedViewModel.premium(context) },
+                onRemoveAdsClicked = { sharedViewModel.removeAds() },
+                premiumActive = sharedViewModel.premiumActive,
+                removeAdsActive = sharedViewModel.removeAdsActive
             )
         }
         else -> {

@@ -50,7 +50,9 @@ fun NavGraphBuilder.taskComposable(
         }
 
         LaunchedEffect(Unit) {
-            showAd()
+            if (sharedViewModel.removeAdsActive.not() && sharedViewModel.premiumActive.not()) {
+                showAd()
+            }
         }
 
         TaskScreen(

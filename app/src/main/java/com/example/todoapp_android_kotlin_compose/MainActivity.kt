@@ -13,7 +13,6 @@ import com.example.todoapp_android_kotlin_compose.ui.ads.AdMobInterstitial
 import com.example.todoapp_android_kotlin_compose.ui.theme.ToDoApp
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

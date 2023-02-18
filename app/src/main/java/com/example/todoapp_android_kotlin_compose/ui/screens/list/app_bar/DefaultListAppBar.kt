@@ -24,7 +24,11 @@ import com.example.todoapp_android_kotlin_compose.ui.theme.*
 fun DefaultListAppBar(
     onSearchClicked: () -> Unit,
     onSortClicked: (Priority) -> Unit,
-    onDeleteAllConfirmed: () -> Unit
+    onDeleteAllConfirmed: () -> Unit,
+    onGoPremiumClicked: () -> Unit,
+    onRemoveAdsClicked: () -> Unit,
+    premiumActive: Boolean = false,
+    removeAdsActive: Boolean = false
 ) {
     TopAppBar(
         title = {
@@ -37,7 +41,11 @@ fun DefaultListAppBar(
             ListAppBarActions(
                 onSearchClicked = onSearchClicked,
                 onSortClicked = onSortClicked,
-                onDeleteAllConfirmed = onDeleteAllConfirmed
+                onDeleteAllConfirmed = onDeleteAllConfirmed,
+                onGoPremiumClicked = onGoPremiumClicked,
+                onRemoveAdsClicked = onRemoveAdsClicked,
+                premiumActive = premiumActive,
+                removeAdsActive = removeAdsActive
             )
         },
         backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor
@@ -48,11 +56,17 @@ fun DefaultListAppBar(
 fun ListAppBarActions(
     onSearchClicked: () -> Unit,
     onSortClicked: (Priority) -> Unit,
-    onDeleteAllConfirmed: () -> Unit
+    onDeleteAllConfirmed: () -> Unit,
+    onGoPremiumClicked: () -> Unit,
+    onRemoveAdsClicked: () -> Unit,
+    premiumActive: Boolean,
+    removeAdsActive: Boolean
 ) {
     val context = LocalContext.current
     var openDeleteAllDialog by remember { mutableStateOf(false) }
     var openAboutDialog by remember { mutableStateOf(false) }
+    var openAdsDialog by remember { mutableStateOf(false) }
+    var openPremiumDialog by remember { mutableStateOf(false) }
 
     DisplayAlertDialog(
         title = stringResource(id = R.string.remove_all_tasks),
@@ -60,6 +74,39 @@ fun ListAppBarActions(
         openDialog = openDeleteAllDialog,
         closeDialog = { openDeleteAllDialog = false },
         onYesClicked = { onDeleteAllConfirmed() }
+    )
+
+    DisplayAlertDialog(
+        title = "Remove All Ads For 5$",
+        message = "You can remove all the ads in the application with a one time purchase!",
+        openDialog = openAdsDialog,
+        closeDialog = { openAdsDialog = false },
+        onYesClicked = { onRemoveAdsClicked() }
+    )
+
+    val premiumTitle = if (premiumActive)
+        "Remove Premium Subscription"
+    else
+        "Go Premium For Only 5$ A Month"
+    val premiumMessage = if (premiumActive)
+        "Are you sure you want to remove the premium subscription? \n" +
+                "You will lose the following functionality: \n" +
+                "* Google Drive backups\n" +
+                "* Sync across multiple devices\n" +
+                "* Ads-free experience"
+    else
+        "With our premium package you will get \n" +
+                "* Google Drive backups\n" +
+                "* Sync across multiple devices\n" +
+                "* Ads-free experience\n" +
+                "Start now and get 7 days free of charge!"
+
+    DisplayAlertDialog(
+        title = premiumTitle,
+        message = premiumMessage,
+        openDialog = openPremiumDialog,
+        closeDialog = { openPremiumDialog = false },
+        onYesClicked = { onGoPremiumClicked() }
     )
 
     DisplayDialog(
@@ -80,26 +127,92 @@ fun ListAppBarActions(
     )
 
     SearchAction(onSearchClicked = onSearchClicked)
+    ShopAction(
+        onGoPremiumClicked = { openPremiumDialog = true },
+        onRemoveAdsClicked = { openAdsDialog = true },
+        premiumActive = premiumActive,
+        removeAdsActive = removeAdsActive
+    )
     SortAction(onSortClicked = onSortClicked)
+    val ppUri = stringResource(R.string.p_p_uri)
+    val tcUri = stringResource(R.string.t_c_uri)
     MoreActions(
         onDeleteAllClicked = { openDeleteAllDialog = true },
         onPrivacyPolicy = {
             val urlIntent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("https://sites.google.com/view/todo-app-1/%D7%91%D7%99%D7%AA")
+                Uri.parse(ppUri)
             )
             context.startActivity(urlIntent)
         },
         onTermsAndConditionsClicked = {
             val urlIntent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("https://sites.google.com/view/todo-app-2/%D7%91%D7%99%D7%AA")
+                Uri.parse(tcUri)
             )
             context.startActivity(urlIntent)
         },
         onAboutClicked = { openAboutDialog = true }
     )
 }
+
+@Composable
+fun ShopAction(
+    onGoPremiumClicked: () -> Unit,
+    onRemoveAdsClicked: () -> Unit,
+    premiumActive: Boolean = false,
+    removeAdsActive: Boolean = false
+) {
+    var expanded by remember { mutableStateOf(false) }
+
+    IconButton(
+        onClick = { expanded = true }
+    ) {
+        Icon(
+            painter = painterResource(
+                id = R.drawable.ic_outline_shopping_cart
+            ),
+            contentDescription = stringResource(R.string.shop),
+            tint = MaterialTheme.colors.topAppBarContentColor
+        )
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            if (premiumActive.not() && removeAdsActive.not()) {
+                DropdownMenuItem(
+                    onClick = {
+                        expanded = false
+                        onRemoveAdsClicked()
+                    }
+                ) {
+                    Text(
+                        modifier = Modifier.padding(MaterialTheme.spacing.medium),
+                        text = stringResource(R.string.remove_ads),
+                        style = Typography.subtitle2
+                    )
+                }
+            }
+            DropdownMenuItem(
+                onClick = {
+                    expanded = false
+                    onGoPremiumClicked()
+                }
+            ) {
+                val text = if (premiumActive)
+                    stringResource(R.string.remove_premium)
+                else
+                    stringResource(R.string.go_premium)
+                Text(
+                    modifier = Modifier.padding(MaterialTheme.spacing.medium),
+                    text = text,
+                    style = Typography.subtitle2
+                )
+            }
+        }
+    }
+}
+
 
 @Composable
 fun SearchAction(
@@ -233,6 +346,8 @@ private fun DefaultListAppBarPreview() {
     DefaultListAppBar(
         onSortClicked = {},
         onDeleteAllConfirmed = {},
-        onSearchClicked = {}
+        onSearchClicked = {},
+        onRemoveAdsClicked = {},
+        onGoPremiumClicked = {}
     )
 }

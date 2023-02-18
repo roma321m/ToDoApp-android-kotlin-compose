@@ -82,6 +82,10 @@ fun ListScreen(
         floatingActionButton = {
             ListFab(onFabClicked = navigateToTaskScreen)
         },
-        bottomBar = { AdMobBanner() }
+        bottomBar = {
+            if (sharedViewModel.removeAdsActive.not() && sharedViewModel.premiumActive.not()) {
+                AdMobBanner()
+            }
+        }
     )
 }
