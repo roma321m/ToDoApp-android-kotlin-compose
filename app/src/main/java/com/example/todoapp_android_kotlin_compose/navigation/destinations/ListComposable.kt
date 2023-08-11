@@ -9,6 +9,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
+import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.LIST_ARGUMENT_KEY
 import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.LIST_SCREEN
@@ -16,7 +17,6 @@ import com.example.todoapp_android_kotlin_compose.ui.screens.list.ListScreen
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
 import com.example.todoapp_android_kotlin_compose.util.Action
 import com.example.todoapp_android_kotlin_compose.util.toAction
-import com.google.accompanist.navigation.animation.composable
 
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi

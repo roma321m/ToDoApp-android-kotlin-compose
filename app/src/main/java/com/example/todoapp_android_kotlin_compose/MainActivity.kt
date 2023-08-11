@@ -8,11 +8,11 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.todoapp_android_kotlin_compose.navigation.SetupNavigation
 import com.example.todoapp_android_kotlin_compose.ui.ads.AdMobInterstitial
 import com.example.todoapp_android_kotlin_compose.ui.theme.ToDoApp
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -21,7 +21,8 @@ import javax.inject.Inject
 @ExperimentalMaterialApi
 class MainActivity : ComponentActivity() {
 
-    @Inject lateinit var adMobInterstitialAd: AdMobInterstitial
+    @Inject
+    lateinit var adMobInterstitialAd: AdMobInterstitial
     private lateinit var navController: NavHostController
     private val sharedViewModel: SharedViewModel by viewModels()
 
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ToDoApp {
-                navController = rememberAnimatedNavController()
+                navController = rememberNavController()
                 SetupNavigation(
                     navController = navController,
                     sharedViewModel = sharedViewModel,

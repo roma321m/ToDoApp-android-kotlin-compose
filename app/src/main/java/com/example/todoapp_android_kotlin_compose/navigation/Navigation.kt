@@ -5,11 +5,11 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import com.example.todoapp_android_kotlin_compose.navigation.Screens.Companion.LIST_SCREEN
 import com.example.todoapp_android_kotlin_compose.navigation.destinations.listComposable
 import com.example.todoapp_android_kotlin_compose.navigation.destinations.taskComposable
 import com.example.todoapp_android_kotlin_compose.ui.viewmodels.SharedViewModel
-import com.google.accompanist.navigation.animation.AnimatedNavHost
 
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
@@ -23,7 +23,7 @@ fun SetupNavigation(
         Screens(navController = navController)
     }
 
-    AnimatedNavHost(
+    NavHost(
         navController = navController,
         startDestination = LIST_SCREEN
     ) {
